@@ -1,19 +1,29 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rick_and_morti/personlist/widget.dart';
+
+import 'screens/personlist/person_list_page.dart';
+import 'screens/splash/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
+  final routes = <String, WidgetBuilder>{
+    '/Home': (BuildContext context) => PersonListPage()
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Rick And Morty',
+      theme: new ThemeData(
+          primaryColor: Colors.black,
+          fontFamily: 'Raleway'
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: SplashScreen(nextRoute: "/Home"),
+      routes: routes,
     );
   }
 }
